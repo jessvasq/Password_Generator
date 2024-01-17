@@ -22,45 +22,45 @@
                 <input type='submit' value='Logout'>
             </form>
 
+            
             <p> Generate Password </p>
             <form method='post' action='/'>
                 <label for='user_input'> Enter the number of characters: </label>
                 <input type='number' name='user_input' required>
+             
+                <label for='uppercase_password'> Uppercase:</label>
+                <label class='switch'>
+                    <input type='checkbox' name='uppercase_password'>
+                    <span class='slider round'></span>
+                </label></br>
+
+                <label for='lowercase_password'> Lowercase:</label>
+                <label class='switch'>
+                    <input type='checkbox' name='lowercase_password'>
+                    <span class='slider round'></span>
+                </label></br>
+
+                <label for='digits_password'> Digits:</label>
+                <label class='switch'>
+                    <input type='checkbox' name='digits_password'>
+                    <span class='slider round'></span>
+                </label></br>
+
+                <label for='symbols_password'> Symbols:</label>
+                <label class='switch'>
+                    <input type='checkbox' name='symbols_password'>
+                    <span class='slider round'></span>
+                </label></br>
+
+
                 <button type='submit'> Generate Password </button>
             </form>
+
+
             {% if user_input %}
                 <p>Your password is: {{ user_input }} </p>
             {% endif %}
       
-
-            <label for='file'> Length: </label>
-            <progress id='file' value='20' max='100'>20%</progress>
-
-            <label for='file'> Uppercase: </label>
-            <label class='switch'>
-                <input type='checkbox'>
-                <span class='slider round'></span>
-            </label></br>
-
-
-            <label for='file'> Lowercase: </label>
-            <label class='switch'>
-                <input type='checkbox'>
-                <span class='slider round'></span>
-            </label></br>
-
-            <label for='file'> Digits: </label>
-            <label class='switch'>
-                <input type='checkbox'>
-                <span class='slider round'></span>
-            </label></br>
-
-            <label for='file'> Symbols: </label>
-            <label class='switch'>
-                <input type='checkbox'>
-                <span class='slider round'></span>
-            </label></br>
-
            
     </body>
 </html>

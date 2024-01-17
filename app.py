@@ -50,21 +50,98 @@ def after_request(response):
 '''HOMEPAGE ROUTE'''
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    user_input= None
-    chars_list = list(string.ascii_letters) + list(string.digits) + list(string.punctuation) +  list(string.hexdigits) + list(string.octdigits) + list(string.printable) + list(string.ascii_lowercase) + list(string.ascii_uppercase) + list(string.digits)
+   
+    chars_list = list(string.ascii_letters) + list(string.digits) + list(string.punctuation) +  list(string.hexdigits) + list(string.octdigits) + list(string.printable) + list(string.ascii_lowercase) + list(string.ascii_uppercase)
+    lowercase_letters = string.ascii_lowercase
+    uppercase_letters = string.ascii_uppercase
+    symbols = string.punctuation
+    digits = string.digits
     
-    password = ' '
+    password = ''
+    user_input = ''
+    generated_password = ''
+    uppercase_password = ''
+    lowercase_password = ''
+    symbols_password = ''
+    
     if request.method == 'POST':
         user_input = request.form.get('user_input')
+        uppercase_password = request.form.get('uppercase_password')
+        lowercase_password = request.form.get('lowercase_password')
+        digits_password = request.form.get('digits_password')
+        symbols_password = request.form.get('symbols_password')
         
-        #checks if user_input is a positive num and greater than 0
-        if user_input.isdigit() and int(user_input) > 0:
-            for i in range(int(user_input)):
-                password += random.choice(chars_list)
-            
-    #render_template() function is used to render an HTML page
-    return render_template('index.html', user_input=password)
+        #clear the generated_password  if it's not checked
+        generated_password = '' if not uppercase_password else generated_password
+        
+        if(uppercase_password and lowercase_password and digits_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + lowercase_letters + digits + symbols) for i in range(int(user_input)))   
+                
+        elif(uppercase_password and lowercase_password and digits_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + lowercase_letters + digits) for i in range(int(user_input)))
+        
+        elif(uppercase_password and lowercase_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + lowercase_letters + symbols) for i in range(int(user_input)))
+                
+        elif(uppercase_password and digits_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + digits + symbols) for i in range(int(user_input)))
+                
+        elif(lowercase_password and digits_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(lowercase_letters + digits + symbols) for i in range(int(user_input)))     
+                
+        elif (uppercase_password and lowercase_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + lowercase_letters) for i in range(int(user_input)))
+        
+        elif(uppercase_password and digits_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + digits) for i in range(int(user_input)))
+        
+        elif(uppercase_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters + symbols) for i in range(int(user_input)))
+                
+        elif(lowercase_password and digits_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(lowercase_letters + digits) for i in range(int(user_input)))
+                
+        elif(lowercase_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(lowercase_letters + symbols) for i in range(int(user_input)))
+                
+        elif(digits_password and symbols_password):
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(digits + symbols) for i in range(int(user_input)))
+                
+        
+        elif lowercase_password:         
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(lowercase_letters) for i in range(int(user_input)))
+                
+        elif digits_password:
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(digits) for i in range(int(user_input)))
+                
+        elif symbols_password:
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(symbols) for i in range(int(user_input)))
 
+        #generate a password if the uppercase_password checkbox is checked
+        elif uppercase_password:
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(uppercase_letters) for i in range(int(user_input)))
+                
+        else:
+            if user_input.isdigit() and int(user_input) > 0:
+                password += ''.join(random.choice(chars_list) for i in range(int(user_input)))
+        
+
+    return render_template('index.html', user_input=password)
 
 
 '''LOGIN ROUTE'''
