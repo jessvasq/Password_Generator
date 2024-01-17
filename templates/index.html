@@ -31,6 +31,36 @@
             {% if user_input %}
                 <p>Your password is: {{ user_input }} </p>
             {% endif %}
-          
+      
+
+            <label for='file'> Length: </label>
+            <progress id='file' value='20' max='100'>20%</progress>
+
+            <label for='file'> Uppercase: </label>
+            <label class='switch'>
+                <input type='checkbox'>
+                <span class='slider round'></span>
+            </label></br>
+
+
+            <label for='file'> Lowercase: </label>
+            <label class='switch'>
+                <input type='checkbox'>
+                <span class='slider round'></span>
+            </label></br>
+
+            <label for='file'> Digits: </label>
+            <label class='switch'>
+                <input type='checkbox'>
+                <span class='slider round'></span>
+            </label></br>
+
+            <label for='file'> Symbols: </label>
+            <label class='switch'>
+                <input type='checkbox'>
+                <span class='slider round'></span>
+            </label></br>
+
+           
     </body>
 </html>
