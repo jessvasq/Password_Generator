@@ -93,11 +93,14 @@ def login():
     
 
 '''LOGOUT ROUTE'''
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
-    logout_user()
-    return redirect('/login')
+    if request.method == 'POST':
+        logout_user()
+        print('user logged out')
+        return redirect('/')
+    return render_template('logout.html')
 
 
 '''Login Manager Config'''
