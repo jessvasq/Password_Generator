@@ -63,13 +63,15 @@ def home():
     uppercase_password = ''
     lowercase_password = ''
     symbols_password = ''
-    
+
+
     if request.method == 'POST':
         user_input = request.form.get('user_input')
         uppercase_password = request.form.get('uppercase_password')
         lowercase_password = request.form.get('lowercase_password')
         digits_password = request.form.get('digits_password')
         symbols_password = request.form.get('symbols_password')
+
         
         #clear the generated_password  if it's not checked
         generated_password = '' if not uppercase_password else generated_password
@@ -161,7 +163,7 @@ def login():
             del user_dict['password']
             login_user(user)
             print('user logged in')
-            return redirect('/')
+            return redirect('/dashboard')
         else:
             print('username or password is incorrect')
             return render_template('login.html', error='Username or password is incorrect')
@@ -215,6 +217,15 @@ def create_account():
                 return redirect(url_for('/'))
         
     return render_template('create_account.html')
+
+
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/item-details', methods=['GET', 'POST'])
+def item_details():
+    return render_template('item_details.html')
 
 
 '''Run the app'''

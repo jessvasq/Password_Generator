@@ -33,6 +33,8 @@ function handleDrag(e) {
     //The count is set to the percentage rounded to the nearest integer and displayed on the page
     const count = document.getElementById('count');
     count.innerHTML = Math.round(percentage);
+    parseInt(count.innerHTML)
+
     
 }
 

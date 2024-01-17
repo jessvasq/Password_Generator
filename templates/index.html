@@ -21,12 +21,11 @@
             <form action='/logout' method='POST'>
                 <input type='submit' value='Logout'>
             </form>
-
             
             <p> Generate Password </p>
             <form method='post' action='/'>
-                <label for='user_input' > </label>
-                <input type='number' placeholder='Enter number of characters'  name='user_input' required>
+                <label for='user_input'>Length:</label>                
+                <input type='number' placeholder='Enter number of characters'  name='user_input' required></br>
              
                 <label for='uppercase_password'> Uppercase:</label>
                 <label class='switch'>
@@ -63,9 +62,8 @@
       
             <div class='progress-container' id='progressContainer' onmousedown='startDrag(event)'>
                 <div class='progress-bar' id='progressBar'>
-                    <h1 id='count' value='0' name='user-input'> 0 </h1> 
+                    <h1 id='count' value='0' type='number' name='user_input'> 0 </h1> 
                 </div>
-
                 <script src="{{ url_for('static', filename='script.js') }}"></script>
             </div>
            
