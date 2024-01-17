@@ -11,14 +11,13 @@
     <body>
         <h1>LOGIN PAGE</h1> 
         <p>Login to store all your passwords securely</p>
-        <form method='post' action='/login'>
-            <label for='user_name'> Username: </label>
-            <input type='text' name='user_name' required>
-            <input type='text' name='main_password' required>
-            <button type='submit'> LOGIN </button>
+        <form method='POST' action='/login'>
+            <label for='username'> Username: </label>
+            <input type='text' name='username' required>
+            <label for='password'> Password: </label>
+            <input type='password' name='password' required>
+            <input type='submit' value='Login'> 
         </form>
-        {% if user_name and main_password %}
-            <p>Your password is: {{ user_input }} </p>
-        {% endif %}
+        <p>Don't have an account? <a href='/create-account'>Register here</a></p>
     </body>
 </html>

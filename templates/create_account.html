@@ -11,18 +11,13 @@
     <body>
         <form method='POST' action='/create-account'>
             <label for='username'> Username: </label>
-            <input type='text' name='user_name' required>
-            <input type='text' name='password' required>
+            <input type='text' name='username' required>
+            <label for='email'> Email: </label>
             <input type='text' name='email' required>
-            <button type='submit'> Create Account </button>
+            <label for='password'> Password: </label>
+            <input type='password' name='password' required>
+            <input type='submit' value='Create Account'>
         </form>
-        {% if user_name and password and email %}
-            <p>Username: {{ username }} </p>
-            <p>Password: {{ password }} </p>
-            <p>Email: {{ email }} </p>
-
-
-        {% endif %}
-        
+        <a href='/'>Back to Login</a>
     </body>
 </html>

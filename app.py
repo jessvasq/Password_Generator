@@ -1,9 +1,53 @@
-#contains Flask routes
-from flask import Flask, render_template, request, redirect
+#Third-party Libraries
+from flask import Flask, render_template, request, redirect, g, url_for, flash
+from flask_bcrypt import generate_password_hash, check_password_hash
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from playhouse.shortcuts import model_to_dict
+
+#Internal imports 
+from config import secret_key
+import models
+
+#Python libraries 
 import random, string
+import sqlite3
+import json
 
 app = Flask(__name__)
 
+'''User Session management setup'''
+#secretKey to encode the session
+app.secret_key = secret_key
+#sets up the session
+login_manager = LoginManager()
+#Initialize login manager
+login_manager.init_app(app)
+
+#loads the user from the user ID that Flask-Login stores in the user's session
+@login_manager.user_loader
+def load_user(user_id):
+    try:
+        return models.User.get(models.User.id == user_id)
+    except models.DoesNotExist:
+        return None
+    
+    
+'''Database connection'''
+@app.before_request
+def before_request():
+    '''Connect to the database before each request'''
+    g.db = models.database
+    g.db.connect()
+    
+@app.after_request
+def after_request(response):
+    '''Close the database connection after each request'''
+    g.db.close()
+    return response
+    
+
+
+'''HOMEPAGE ROUTE'''
 @app.route('/', methods=['GET', 'POST'])
 def home():
     user_input= None
@@ -21,39 +65,81 @@ def home():
     #render_template() function is used to render an HTML page
     return render_template('index.html', user_input=password)
 
+
+
+'''LOGIN ROUTE'''
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    user_name = None
-    main_password = None
-    
-    if request.method == 'POST':
-        user_name = request.form.get('user_name')
-        main_password = request.form.get('main_password')
-        #side note: hash password 
-        if user_name and main_password:
-            return redirect('/')
-        
-    return render_template('login.html', user_name=user_name, main_password=main_password)
-
-@app.route('/create-account', methods=['GET', 'POST'])
-def create_account():
-    username = ''
-    password = ''
-    email = ''
-    
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        email = request.form.get('email')
         
-        if username and password and email:
-            return redirect('/index.html', )
-    return render_template('create_account.html', username=username, password=password, email=email)
+        if not username or not password:
+            return render_template('login.html', error='Please fill out all fields')
+        
+        user = models.User.get(models.User.username == username) 
+        
+        if user and check_password_hash(user.password, password):
+            user_dict = model_to_dict(user)
+            del user_dict['password']
+            login_user(user)
+            print('user logged in')
+            return redirect('/')
+        else:
+            print('username or password is incorrect')
+            return render_template('login.html', error='Username or password is incorrect')
+    return render_template('login.html')
+    
+    
+
+'''LOGOUT ROUTE'''
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/login')
+
+
+'''Login Manager Config'''
+#redirect users to the login page when they aren't logged in and try to access a login_required view
+login_manager.login_view = 'login'
+login_manager.login_message = 'You need to login to view this page'
 
 
 
+'''CREATE ACCOUNT ROUTE'''''
+@app.route('/create-account', methods=['GET', 'POST'])
+def create_account():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        if not username or not password or not email:
+            return render_template('create_account.html', error='Please fill out all fields')
+        
+        try:
+            models.User.get(models.User.username == username)
+            print('user exists')
+            return render_template('create_account.html', error='A user with that username or email already exists')
+        except models.DoesNotExist:
+            try:
+                models.User.get(models.User.email == email)
+                print('user exists')
+                return render_template('create_account.html', error='A user with that username or email already exists')
+            except models.DoesNotExist:
+                hashed_password = generate_password_hash(password)
+                models.User.create(username=username, email=email, password=hashed_password)
+                flash('Account created successfully', 'success')
+                print('account created')
+                return redirect(url_for('/'))
+        
+    return render_template('create_account.html')
 
+
+'''Run the app'''
 if __name__ == '__main__':
+    models.initialize()
     app.run(debug=True)
     
 

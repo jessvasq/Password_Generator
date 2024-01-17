@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 venv
+config.py
+User.sqlite
+User.sqlite3
