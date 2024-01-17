@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Password Generator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./static/styles/main.css">
+    </head>
+    <body>
+       <h1> PASSWORD GENERATOR </h1>
+            <form action='/login' method='POST'>
+                <input type='submit' value='Login'/>
+            </form>
+                
+            <form action='/create-account' method='POST'>
+                <input type='submit' value='Create New Account'/>
+            </form>
+
+            <p> Generate Password </p>
+            <form method='post' action='/'>
+                <label for='user_input'> Enter the number of characters: </label>
+                <input type='number' name='user_input' required>
+                <button type='submit'> Generate Password </button>
+            </form>
+            {% if user_input %}
+                <p>Your password is: {{ user_input }} </p>
+            {% endif %}
+          
+    </body>
+</html>
