@@ -616,8 +616,8 @@ video {
   margin-top: -3.5rem;
 }
 
-.-mt-4 {
-  margin-top: -1rem;
+.-mt-2 {
+  margin-top: -0.5rem;
 }
 
 .mb-1 {
@@ -628,16 +628,20 @@ video {
   margin-bottom: 1rem;
 }
 
-.ml-10 {
-  margin-left: 2.5rem;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .ml-6 {
   margin-left: 1.5rem;
+}
+
+.ml-8 {
+  margin-left: 2rem;
 }
 
 .mr-14 {
@@ -670,14 +674,6 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.-mt-2 {
-  margin-top: -0.5rem;
 }
 
 .flex {
@@ -770,6 +766,10 @@ video {
   padding: 0.25rem;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -787,8 +787,24 @@ video {
   padding-right: 0.5rem;
 }
 
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-2xl {
@@ -947,6 +963,16 @@ input:checked + .slider:before {
   color: orangered
 }
 
+.text-sm {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+.text-xs {
+  font-size: 0.5rem;
+  line-height: 1rem;
+}
+
 @media (min-width: 640px) {
   .sm\:text-sm {
     font-size: 0.875rem;
@@ -981,3 +1007,4 @@ input:checked + .slider:before {
     padding-bottom: 0.5rem;
   }
 }
+

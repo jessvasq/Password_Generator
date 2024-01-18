@@ -21,7 +21,7 @@
             <div class='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
                     <a class=' bg-white text-black rounded-lg' id='btts' href='/login'>Log in</a>
                     <a class='ml-2 bg-white  text-black rounded-lg' id='btts' href='/logout'>Log out</a>
-                    <a class='ml-2 bg-white text-black rounded-lg' id='btts' href='/create-account'>Sing Up</a>
+                    <a class='ml-2 bg-white text-black rounded-lg' id='btts' href='/create-account'>Sign Up</a>
             </div>
             </div>
             </div>
@@ -35,30 +35,30 @@
             <div>
                
                 <form method='post' action='/'>
-                    <label class='text-xs mr-2' for='user_input'>Length </label>                
-                    <input type='number'placeholder='  Number of characters'  name='user_input' class='bg-teal-50 rounded-sm text-xs text-zinc-700'   required> </br>
+                    <label class='text-sm mr-2' for='user_input'>Length </label>                
+                    <input type='number'placeholder='  Number of characters'  name='user_input' class='bg-teal-50 pl-2 rounded-sm text-sm text-zinc-700'   required> </br>
                 
-                    <p class='text-xs text-lime-900 mb-1 mt-2'>Customize your Password </p>
+                    <p class='text-sm text-lime-900 mb-1 mt-2'>Customize your Password </p>
 
-                    <label class='text-xs  mr-2' for='uppercase_password'> Uppercase </label>
+                    <label class='text-sm  mr-2 ' for='uppercase_password'> Uppercase </label>
                     <label class='switch'>
                         <input type='checkbox' name='uppercase_password'>
                         <span class='slider round'></span>
                     </label></br>
 
-                    <label class='text-xs mr-2'  for='lowercase_password'> Lowercase </label>
+                    <label class='text-sm mr-2'  for='lowercase_password'> Lowercase </label>
                     <label class='switch'>
                         <input type='checkbox' name='lowercase_password'>
                         <span class='slider round'></span>
                     </label></br>
 
-                    <label class='text-xs  mr-2'  for='digits_password'> Digits </label>
+                    <label class='text-sm  mr-2'  for='digits_password'> Digits </label>
                     <label class='switch'>
                         <input type='checkbox' name='digits_password'>
                         <span class='slider round'></span>
                     </label></br>
 
-                    <label class='text-xs  mr-2'  for='symbols_password'> Symbols </label>
+                    <label class='text-sm  mr-2'  for='symbols_password'> Symbols </label>
                     <label class='switch'>
                         <input type='checkbox' name='symbols_password'>
                         <span class='slider round'></span>
@@ -73,7 +73,7 @@
             {% if user_input %}
             <div class='-mt-11 ml-6'>
                 <p class='text-zinc-700 text-xs'>Your password is</p>
-                    <p class='text-orange-700 bg-white text-sm p-1 rounded-md'> 
+                    <p class='text-orange-700 bg-white text-sm pl-2 pr-2 rounded-md'> 
                     {{ user_input }} </p>
             {% endif %}
       

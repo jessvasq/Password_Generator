@@ -21,27 +21,27 @@
             <div class='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
                     <a class=' bg-white text-black rounded-lg' id='btts' href='/login'>Log in</a>
                     <a class='ml-2 bg-white  text-black rounded-lg' id='btts' href='/logout'>Log out</a>
-                    <a class='ml-2 bg-white text-black rounded-lg' id='btts' href='/create-account'>Sing Up</a>
+                    <a class='ml-2 bg-white text-black rounded-lg' id='btts' href='/create-account'>Sign Up</a>
             </div>
             </div>
             </div>
         </nav>
 
 
-        <div class='mt-20 flex items-center justify-center mx-20 h-56 bg-sky-50 rounded-sm	'>
+        <div class='mt-20 flex items-center justify-center mx-20 h-56 bg-sky-50 rounded-lg'>
       
 
         <div>
         <div class='mb-4 -mt-2'>
-            <h3 class='text-center text-xl '>Welcome Back!</h3>
+            <h3 class='text-center text-xl mt-2 '>Welcome Back!</h3>
             <p class='text-center text-xs'>Login to see and store all your passwords securely</p>
         </div>
 
             <form method='POST' action='/login'>
-            <label class='text-xs ml-10' for='username'> Username </label>
-            <input class='rounded-md h-4 w-36 ml-6 text-xs text-zinc-700' type='text' name='username' required>
-            <label class='text-xs ml-10'  for='password'> Password: </label>
-            <input class='rounded-md h-4 w-36 ml-6 text-xs text-zinc-700 ' type='password' name='password' required>
+            <label class='text-xs ml-4' for='username'> Username </label>
+            <input class='rounded-md p-2 h-4 w-36 ml-4 text-xs text-zinc-700' type='text' name='username' required></br>
+            <label class='text-xs ml-4' for='password'> Password: </label>
+            <input class='rounded-md h-4 w-36 ml-4 text-xs p-2 text-zinc-700 ' type='password' name='password' required>
 
             
 
@@ -52,7 +52,7 @@
         </form>
 
     
-        <p class='text-zinc-700 text-xs text-center mt-4' >Don't have an account? 
+        <p class='text-zinc-700 text-xs text-center mt-2' >Don't have an account? 
             <a class='underline' href='/create-account'>Register here</a></p>
         </div>
         </div>
