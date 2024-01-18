@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./static/src/input.css -o ./static/css/main.css --watch"
+  },
+  
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "name": "password_generator",
+  "description": "Software tool that generates strong and secure passwords.",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

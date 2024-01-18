@@ -6,66 +6,81 @@
         <title>Password Generator</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./static/styles/main.css">
+        <link rel="stylesheet" href="/static/css/main.css">
     </head>
-    <body>
-       <h1> PASSWORD GENERATOR </h1>
-            <form action='/login' method='POST'>
-                <input type='submit' value='Login'/>
-            </form>
-                
-            <form action='/create-account' method='POST'>
-                <input type='submit' value='Create New Account'/>
-            </form>
+    <body class='bg-sky-200 text-black mx-20'>
+    
+       
+        <nav class='fixed  top-0 left-0 right-0 z-10 bg-sky-100 bg-opacity-25'>
 
-            <form action='/logout' method='POST'>
-                <input type='submit' value='Logout'>
-            </form>
+            <div class='flex container lg:py-2 items-center justify-between mx-auto px-2'> 
+   
+                <a href='/' class='text-xl md:text-xl font-semibold ' > PASSWORD MANAGER</a>
             
-            <p> Generate Password </p>
-            <form method='post' action='/'>
-                <label for='user_input'>Length:</label>                
-                <input type='number' placeholder='Enter number of characters'  name='user_input' required></br>
+
+            <div class='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
+                    <a class=' bg-white text-black rounded-lg' id='btts' href='/login'>Log in</a>
+                    <a class='ml-2 bg-white  text-black rounded-lg' id='btts' href='/logout'>Log out</a>
+                    <a class='ml-2 bg-white text-black rounded-lg' id='btts' href='/create-account'>Sing Up</a>
+            </div>
+            </div>
+            </div>
+        </nav>
              
-                <label for='uppercase_password'> Uppercase:</label>
-                <label class='switch'>
-                    <input type='checkbox' name='uppercase_password'>
-                    <span class='slider round'></span>
-                </label></br>
+      <div class='mt-24 container flex items-center justify-center'>
+            <div class='flex items-end justify-end mr-14'>
+                <p class='text-2xl md:text-xl sm:text-sm font-bold -mt-14 uppercase'> Generate Password </p>
+            </div>
 
-                <label for='lowercase_password'> Lowercase:</label>
-                <label class='switch'>
-                    <input type='checkbox' name='lowercase_password'>
-                    <span class='slider round'></span>
-                </label></br>
+            <div>
+               
+                <form method='post' action='/'>
+                    <label class='text-xs mr-2' for='user_input'>Length </label>                
+                    <input type='number'placeholder='  Number of characters'  name='user_input' class='bg-teal-50 rounded-sm text-xs text-zinc-700'   required> </br>
+                
+                    <p class='text-xs text-lime-900 mb-1 mt-2'>Customize your Password </p>
 
-                <label for='digits_password'> Digits:</label>
-                <label class='switch'>
-                    <input type='checkbox' name='digits_password'>
-                    <span class='slider round'></span>
-                </label></br>
+                    <label class='text-xs  mr-2' for='uppercase_password'> Uppercase </label>
+                    <label class='switch'>
+                        <input type='checkbox' name='uppercase_password'>
+                        <span class='slider round'></span>
+                    </label></br>
 
-                <label for='symbols_password'> Symbols:</label>
-                <label class='switch'>
-                    <input type='checkbox' name='symbols_password'>
-                    <span class='slider round'></span>
-                </label></br>
+                    <label class='text-xs mr-2'  for='lowercase_password'> Lowercase </label>
+                    <label class='switch'>
+                        <input type='checkbox' name='lowercase_password'>
+                        <span class='slider round'></span>
+                    </label></br>
 
+                    <label class='text-xs  mr-2'  for='digits_password'> Digits </label>
+                    <label class='switch'>
+                        <input type='checkbox' name='digits_password'>
+                        <span class='slider round'></span>
+                    </label></br>
 
-                <button type='submit'> Generate Password </button>
-            </form>
+                    <label class='text-xs  mr-2'  for='symbols_password'> Symbols </label>
+                    <label class='switch'>
+                        <input type='checkbox' name='symbols_password'>
+                        <span class='slider round'></span>
+                    </label></br>
 
+                    <div class='flex justify-center items-center'>
+                        <button class='bg-orange-600  rounded-lg mt-6 text-zinc-100 text-sm p-1' type='submit'> Generate </button>
+                    </div>
+                </form>
+            </div>
 
             {% if user_input %}
-                <p>Your password is: {{ user_input }} </p>
+            <div class='-mt-11 ml-6'>
+                <p class='text-zinc-700 text-xs'>Your password is</p>
+                    <p class='text-orange-700 bg-white text-sm p-1 rounded-md'> 
+                    {{ user_input }} </p>
             {% endif %}
       
-            <div class='progress-container' id='progressContainer' onmousedown='startDrag(event)'>
-                <div class='progress-bar' id='progressBar'>
-                    <h1 id='count' value='0' type='number' name='user_input'> 0 </h1> 
-                </div>
-                <script src="{{ url_for('static', filename='script.js') }}"></script>
             </div>
-           
+            </div>
+        </div>
+  
+
     </body>
 </html>

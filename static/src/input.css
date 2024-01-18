@@ -1,21 +1,15 @@
-body {
-    background-color: black;
-    color: white;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-h1 {
-    font-size: 12px;
-}
 
 /* HOME PAGE */
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 18px;
+    width: 35px;
+    height: 13px;
+    top: 6px
   }
   
   .switch input { 
@@ -39,10 +33,11 @@ h1 {
   .slider:before {
     position: absolute;
     content: "";
-    height: 14px;
-    width: 15px;
+    height: 10px;
+    width: 11px;
     left: 4px;
-    bottom: 2px;
+    top: 1px;
+    bottom: 1px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -86,4 +81,17 @@ h1 {
   background-color: #4caf50;
   width: 0;
   position: absolute;
+}
+
+#btts{
+    font-size: 8px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#btts:hover{
+    background-color: orangered;
+    color: white;
+
 }
