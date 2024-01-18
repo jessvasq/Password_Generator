@@ -95,3 +95,8 @@
     color: white;
 
 }
+
+#bttns1:hover {
+    background-color: skyblue;
+    color: orangered
+}
