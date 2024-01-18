@@ -112,3 +112,10 @@
   line-height: 1rem;
 }
 
+#category-container{
+  margin-top: 50px;
+}
+
+#items-container{
+  margin-top: 45px;
+}

@@ -582,16 +582,40 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
 .left-0 {
   left: 0px;
+}
+
+.left-2 {
+  left: 0.5rem;
+}
+
+.left-44 {
+  left: 11rem;
 }
 
 .right-0 {
   right: 0px;
 }
 
+.right-2 {
+  right: 0.5rem;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-4 {
+  top: 1rem;
 }
 
 .z-10 {
@@ -608,6 +632,10 @@ video {
   margin-right: auto;
 }
 
+.-mt-1 {
+  margin-top: -0.25rem;
+}
+
 .-mt-11 {
   margin-top: -2.75rem;
 }
@@ -618,6 +646,10 @@ video {
 
 .-mt-2 {
   margin-top: -0.5rem;
+}
+
+.-mt-9 {
+  margin-top: -2.25rem;
 }
 
 .mb-1 {
@@ -688,8 +720,24 @@ video {
   height: 14rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
 .w-36 {
   width: 9rem;
+}
+
+.w-56 {
+  width: 14rem;
 }
 
 .cursor-pointer {
@@ -714,6 +762,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.rounded {
+  border-radius: 0.25rem;
 }
 
 .rounded-lg {
@@ -779,24 +831,24 @@ video {
   padding-right: 0.5rem;
 }
 
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
 .pl-2 {
   padding-left: 0.5rem;
+}
+
+.pr-1 {
+  padding-right: 0.25rem;
 }
 
 .pr-2 {
   padding-right: 0.5rem;
 }
 
-.pt-1 {
-  padding-top: 0.25rem;
-}
-
-.pb-1 {
-  padding-bottom: 0.25rem;
-}
-
-.pl-1 {
-  padding-left: 0.25rem;
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -854,9 +906,19 @@ video {
   color: rgb(194 65 12 / var(--tw-text-opacity));
 }
 
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .text-zinc-100 {
   --tw-text-opacity: 1;
   color: rgb(244 244 245 / var(--tw-text-opacity));
+}
+
+.text-zinc-500 {
+  --tw-text-opacity: 1;
+  color: rgb(113 113 122 / var(--tw-text-opacity));
 }
 
 .text-zinc-700 {
@@ -973,6 +1035,14 @@ input:checked + .slider:before {
   line-height: 1rem;
 }
 
+#category-container{
+  margin-top: 50px;
+}
+
+#items-container{
+  margin-top: 45px;
+}
+
 @media (min-width: 640px) {
   .sm\:text-sm {
     font-size: 0.875rem;
@@ -1007,4 +1077,3 @@ input:checked + .slider:before {
     padding-bottom: 0.5rem;
   }
 }
-

@@ -6,23 +6,75 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/static/css/main.css">
     </head>
-    <body>
-        <form action='/add-item'>
-            <input type='submit' value='Add New Item'>
-        </form>
+    <body class='bg-sky-200  text-lime-900 mx-20'>
+        <nav class='fixed  top-0 left-0 right-0 z-10 bg-sky-100 bg-opacity-25'>
 
-        <div> 
-            <h1>Categories</h1>
-            <ul> 
-                {% for item in items %}
-                    <div>Title: {{ item.title }}</div>
-                    <div>Username: {{ item.username }}</div>
-                    <div>Password: {{ item.password }}</div>
-                    <a href = '/item-details/{{ item.id }}'>Details</a>
-                {% endfor %}
-            </ul>
+            <div class='flex container lg:py-2 items-center justify-between mx-auto px-2'> 
+   
+                <a href='/' class='text-xl md:text-xl font-semibold ' > PASSWORD MANAGER</a>
+            
+
+            <div class='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
+                    <a class=' bg-white text-black rounded-lg' id='btts' href='/login'>Log in</a>
+                    <a class='ml-2 bg-white  text-black rounded-lg' id='btts' href='/logout'>Log out</a>
+                    <a class='ml-2 bg-white text-black rounded-lg' id='btts' href='/create-account'>Sign Up</a>
+            </div>
+            </div>
+            </div>
+        </nav>
+
+        <div id='category-container' class='h-56 rounded-lg relative container mx-auto'>
+
+            <div>
+                <div class=' text-sm ml-2'>
+                    <p class='text-sm'>ALL CATEGORIES</p>
+                </div>
+
+                <div class='absolute top-4 left-2'>
+                    <form action='/search'>
+                        <input type='text' class='rounded w-28 h-4 text-xs pl-2 bg-sky-100' name='search' placeholder='Search'>
+                        <input class=' text-xs text-white bg-orange-600 pl-1 pr-1 rounded' type='submit' value='Search'>
+                    </form>
+                </div>
+
+                <div class='absolute top-4 left-44'>
+                    <form action='/sort'>
+                        <select  class='h-4 w-14 bg-sky-100 text-zinc-500 text-xs rounded' name='sort'>
+                            <option value='title'>Title</option>
+                            <option value='username'>Username</option>
+                            <option value='password'>Website</option>
+                        </select>
+                        <input class=' text-xs text-white bg-orange-600 pl-1 pr-1 rounded' type='submit' value='Sort'>
+                    </form>
+                </div>
+
+                <div class='absolute top-4 right-2'>
+                    <form action='/add-item'>
+                        <input class= 'bg-white rounded-lg pl-2 pr-2 text-xl' type='submit' value='+'>
+                    </form>
+                </div>
+
+
+                <div id='items-container' class='absolute left-2 bg-white p-2 h-8 rounded-lg'> 
+                    <div class='relative container text-xs w-56 text-right'>
+                        <ul> 
+                            <div class='text-left '>
+                            {% for item in items %}
+                                <div class='-mt-1 font-semibold '>{{ item.title }}</div>
+                                <div  class='-mt-1 text-zinc-500'>{{ item.username }}</div>
+                            </div>
+                            <div class='-mt-9 text-xl font-semibold'>
+                                <a href = '/item-details/{{ item.id }}'> ... </a>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </body>
 </html>
