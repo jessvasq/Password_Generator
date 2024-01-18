@@ -10,5 +10,20 @@
     </head>
     <body>
         <h1> Item Details </h1>
+        <h2> {{ item.title }} </h2>
+        <p> {{ item.username }} </p>
+        <p> {{ item.password }} </p>
+        <p> {{ item.website }} </p>
+        <p> {{ item.email }} </p>
+        <p> {{ item.category }} </p>
+
+        <a href="/items/{{ item.id }}/edit"> Edit </a>
+
+        <form action="/delete-item/{{ item.id }}" method="POST">
+            <button type="submit"> Delete </button>
+        </form>
+
+        <a href="/dashboard"> Back </a>
+
     </body>
 </html>

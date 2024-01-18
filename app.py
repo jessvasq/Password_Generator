@@ -221,12 +221,74 @@ def create_account():
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
+    items = models.Item.select().where(models.Item.user == current_user.id)
+    if request.method == 'GET':
+        return render_template('dashboard.html', items=items)
     return render_template('dashboard.html')
 
-@app.route('/item-details', methods=['GET', 'POST'])
-def item_details():
-    return render_template('item_details.html')
+@app.route('/item-details/<id>', methods=['GET', 'POST'])
+def item_details(id):
+    item = models.Item.get(models.Item.id == id)
+    #show the item details
+    
+    return render_template('item_details.html', item=item)
+    
 
+
+@app.route('/add-item', methods=['GET', 'POST'])
+def add_item():
+    title = request.form.get('title')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    website = request.form.get('website')
+    email = request.form.get('email')
+    category = request.form.get('category')
+    
+    if request.method == 'POST':
+        if not title or not username or not password or not category:
+            return render_template('add_item.html', error='Please fill out all fields')
+        
+        models.Item.create(title=title, username=username, password=password, website=website, email=email, category=category, user=current_user.id)
+        print('item created')
+        return redirect('/dashboard')
+    
+    return render_template('add_item.html')
+
+
+@app.route('/items/<id>/edit', methods=['GET', 'POST'])
+def edit_item(id):
+    item = models.Item.get(models.Item.id == id)
+    if request.method == 'POST':
+        title = request.form.get('title')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        website = request.form.get('website')
+        email = request.form.get('email')
+        category = request.form.get('category')
+        
+        if not title or not username or not password or not category:
+            return render_template('edit_item.html', error='Please fill out all fields')
+        
+        item.title = title
+        item.username = username
+        item.password = password
+        item.website = website
+        item.email = email
+        item.category = category
+        item.save()
+        print('item updated')
+        return redirect('/dashboard')
+    return render_template('edit_item.html', item=item)
+
+
+@app.route('/delete-item/<id>', methods=['GET', 'POST'])
+def delete_item(id):
+    item = models.Item.get(models.Item.id == id)
+    if request.method == 'POST':
+        item.delete_instance()
+        print('item deleted')
+        return redirect('/dashboard')
+    return render_template('delete_item.html', item=item)
 
 '''Run the app'''
 if __name__ == '__main__':

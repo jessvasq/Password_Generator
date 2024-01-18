@@ -9,13 +9,20 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <form action='/item-details' method='POST'>
-            <input type='submit' value='Details'>
+        <form action='/add-item'>
+            <input type='submit' value='Add New Item'>
         </form>
-        
+
         <div> 
             <h1>Categories</h1>
+            <ul> 
+                {% for item in items %}
+                    <div>Title: {{ item.title }}</div>
+                    <div>Username: {{ item.username }}</div>
+                    <div>Password: {{ item.password }}</div>
+                    <a href = '/item-details/{{ item.id }}'>Details</a>
+                {% endfor %}
+            </ul>
         </div>
-        
     </body>
 </html>

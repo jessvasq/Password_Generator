@@ -14,9 +14,22 @@ class User(UserMixin, Model):
     class Meta:
         database = database
         
+        
+class Item(Model):
+    id = AutoField(primary_key=True)
+    title = CharField()
+    username = CharField()
+    password = CharField()
+    website = CharField()
+    email = CharField()
+    category = CharField()
+    user = ForeignKeyField(User, backref='items')
+    
+    class Meta:
+        database = database
 
 def initialize():
     database.connect()
-    database.create_tables([User], safe=True)
+    database.create_tables([User, Item], safe=True)
     print('tables created')
     database.close()

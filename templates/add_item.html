@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+        <form method='POST' action='/add-item'>
+            <label for='title'> Title: </label>
+            <input type='text' name='title' required><br/>
+
+            <label for='email'> Email: </label>
+            <input type='text' name='email'><br/>
+
+            <label for='username'> Username: </label>
+            <input type='text' name='username' required><br/>
+
+            <label for='password'> Password: </label>
+            <input type='password' name='password' required><br/>
+
+            <label for='website'> Website: </label>
+            <input type='text' name='website'><br/>
+
+            <label for='category'> Category: </label>
+                <select name="category" id="category">
+                    <option value="Emails">Emails</option>
+                    <option value="Logins">Logins</option>
+                    <option value="Bank Accounts">Banking</option>
+                    <option value="Social Media">Social</option>
+                    <option value="School">School</option>
+                    <option value="Other">Other</option>
+                </select><br/>
+
+            <input type='submit' value='Save'>
+        </form>
+
+        <a href='/dashboard'>Back to Categories</a>
+    </body>
+</html>

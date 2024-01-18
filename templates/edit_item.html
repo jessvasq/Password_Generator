@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <h1>Edit {{ item.title }} </h1>
+         <form method="POST">
+            <input type="text" name="title" value="{{ item.title }}">
+            <input type="text" name="username" value="{{ item.username }}">
+            <input type="text" name="email" value="{{ item.email }}">
+            <input type="text" name="website" value="{{ item.website }}">
+            <input type="text" name="password" value="{{ item.password }}">
+
+            <select name="category" value="{{ item.category }}" >
+                <option value="Emails">Emails</option>
+                <option value="Logins">Logins</option>
+                <option value="Bank Accounts">Banking</option>
+                <option value="Social Media">Social</option>
+                <option value="School">School</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <a href="/item-details/{{ item.id }}">Cancel</a>
+    </body>
+</html>
