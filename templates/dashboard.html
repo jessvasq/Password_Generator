@@ -59,13 +59,14 @@
 
 
 
-                <div id='items-container' class='absolute top-24 mx-4 h-16 w-80 md:left-2 bg-white md:p-2 md:h-8 rounded-lg'> 
+                <div id='items-container' class='absolute top-24 mx-4 rounded-lg'> 
                     <div class='relative text-xl p-2 container md:text-xs md:w-56 text-right'>
                         <ul> 
-                            <div class='text-left '>
+                            
                             {% for item in items %}
+                            <div class='pl-2 py-4 text-left h-18 w-80 md:left-2 bg-white md:p-2 md:h-8'>
                                 <div class='-mt-1 font-semibold '>{{ item.title }}</div>
-                                <div  class='-mt-1 pl-4 text-zinc-500'>{{ item.username }}</div>
+                                <div  class='-mt-1 pl-4 font-light'>{{ item.email }}</div>
                             </div>
                             <div class='md:-mt-9 -mt-12  mr-4 text-2xl font-bold md:text-xl md:font-semibold'>
                                 <a href = '/item-details/{{ item.id }}'> . . . </a>
