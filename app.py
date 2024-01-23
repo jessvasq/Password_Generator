@@ -47,7 +47,7 @@ def after_request(response):
     
 
 
-'''HOMEPAGE ROUTE'''
+'''HOMEPAGE ROUTE - GENERATE PASSWORD LOGIC'''
 @app.route('/', methods=['GET', 'POST'])
 def home():
    
@@ -218,8 +218,9 @@ def create_account():
         
     return render_template('create_account.html')
 
-
+'''SHOW DASHBOARD'''
 @app.route('/dashboard', methods=['GET', 'POST'])
+@login_required
 def dashboard():
     items = models.Item.select().where(models.Item.user == current_user.id)
     if request.method == 'GET':
@@ -229,13 +230,13 @@ def dashboard():
 @app.route('/item-details/<id>', methods=['GET', 'POST'])
 def item_details(id):
     item = models.Item.get(models.Item.id == id)
-    #show the item details
-    
+    #show the item details  
     return render_template('item_details.html', item=item)
     
 
-
+'''ADD ITEM'''
 @app.route('/add-item', methods=['GET', 'POST'])
+@login_required
 def add_item():
     title = request.form.get('title')
     username = request.form.get('username')
@@ -254,8 +255,9 @@ def add_item():
     
     return render_template('add_item.html')
 
-
+'''EDIT ITEM'''
 @app.route('/items/<id>/edit', methods=['GET', 'POST'])
+@login_required
 def edit_item(id):
     item = models.Item.get(models.Item.id == id)
     if request.method == 'POST':
@@ -280,8 +282,9 @@ def edit_item(id):
         return redirect('/dashboard')
     return render_template('edit_item.html', item=item)
 
-
+'''DELETE ITEM'''
 @app.route('/delete-item/<id>', methods=['GET', 'POST'])
+@login_required
 def delete_item(id):
     item = models.Item.get(models.Item.id == id)
     if request.method == 'POST':
