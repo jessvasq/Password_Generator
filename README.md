@@ -6,11 +6,11 @@ A mobile app designed to securely store and manage user passwords for various on
 
 
 ## TECHNOLOGIES USED ##
-* <img src='https://github.com/jessvasq/Password_Generator/assets/119137671/98d45b5e-3084-48f1-9e67-d89123e88a1b' width=55px height=40px>  
-* <img src='https://github.com/jessvasq/Password_Generator/assets/119137671/20ea71dc-e4b6-4b08-95c4-aaae332b613f' width=40px height=40px> 
-* <img src='https://github.com/jessvasq/Password_Generator/assets/119137671/3e6caf5b-2695-4362-a759-25e67f5d5e87' width=40px height=40px>   
-* <img src='https://github.com/jessvasq/Password_Generator/assets/119137671/52724dab-9e30-49ee-aa02-fdfb60ff04b9' width=40px height=40px>  
-* <img src='https://github.com/jessvasq/Password_Generator/assets/119137671/e84d9449-1940-498c-81da-be6c5e27a64e' width=40px height=35px>   
-* <img src='https://github.com/jessvasq/Password_Generator/assets/119137671/ba82f4ac-be65-4c4b-9d7d-63c2a8d64d81' width=40px height=40px> 
+* Python
+* Flask
+* SQlite
+* HTML
+* CSS
+* Tailwind
 
 
